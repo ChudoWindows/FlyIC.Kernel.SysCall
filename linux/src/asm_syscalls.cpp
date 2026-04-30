@@ -7,6 +7,11 @@
 #define SYS_MMAP 9
 #define SYS_MUNMAP 11
 #define SYS_EXIT 60
+#define SYS_WRITE 1
+
+#define STD_INPUT 0
+#define STD_OUTPUT 1
+#define STD_ERROR 2
 
 static INT64 syscall6(INT64 number, INT64 arg1, INT64 arg2, INT64 arg3, INT64 arg4, INT64 arg5, INT64 arg6) {
     INT64 ret;
@@ -37,4 +42,14 @@ void sys_exit(INT32 code)
 {
 	syscall6(SYS_EXIT, (INT64)code, 0, 0, 0, 0, 0);
 	__builtin_unreachable();
+}
+
+UINT64 sys_getstdhandle(UINT64 Number)
+{
+	return Number; // Нам ничего получать, уже все есть по номера
+}
+
+INT64 sys_write(UINT64 fd, LPCVOID buf, UINT64 count)
+{
+	return (UINT64)syscall6(SYS_WRITE, (INT64)fd, (INT64)buf, (INT64)count, 0, 0, 0);
 }

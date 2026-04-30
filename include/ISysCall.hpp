@@ -19,6 +19,21 @@ namespace FlyIC
 				LPVOID Mem;
 				UINT64 Size;
 			} IMemBlock;
+			
+			class IHandle
+			{
+			public:
+				virtual UINT64 Read(ExChar* Buffer) = 0;
+				virtual UINT64 Write(const ExChar* Buffer) = 0;
+			};
+			
+			class IHandleNumber
+			{
+			public:
+				static UINT64 Input = 0;
+				static UINT64 Output = 1;
+				static UINT64 Error = 2;
+			};
 
 			class ISysCall
 			{
@@ -26,6 +41,8 @@ namespace FlyIC
 				virtual IMemBlock Alloc(UINT64 Size) = 0;
 				virtual BOOL Free(IMemBlock& MemBlock) = 0;
 				virtual void Exit(INT32 Code) = 0;
+				virtual IHandle* GetStdHandle(UINT64 Number) = 0;
+				virtual BOOL DestroyStdHandle(IHandle* Handle) = 0;
 			};
 		}
 	}
