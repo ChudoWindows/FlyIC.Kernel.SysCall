@@ -1,0 +1,7 @@
+tmp
+lib
+*.a
+*.o
+*.exec
+*.bin
+*.out

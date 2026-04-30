@@ -97,6 +97,7 @@ FlyIC_Kernel_SysCall_Linux_Test_EXTERNAL_OBJECTS =
 /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/test/Debug/FlyIC.Kernel.SysCall.Linux.Test: CMakeFiles/FlyIC.Kernel.SysCall.Linux.Test.dir/build.make
 /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/test/Debug/FlyIC.Kernel.SysCall.Linux.Test: CMakeFiles/FlyIC.Kernel.SysCall.Linux.Test.dir/compiler_depend.ts
 /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/test/Debug/FlyIC.Kernel.SysCall.Linux.Test: /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/lib/Debug/FlyIC.Kernel.Base.a
+/mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/test/Debug/FlyIC.Kernel.SysCall.Linux.Test: /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/lib/Debug/FlyIC.Kernel.SysCall.Linux.a
 /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/test/Debug/FlyIC.Kernel.SysCall.Linux.Test: CMakeFiles/FlyIC.Kernel.SysCall.Linux.Test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/tmp/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable \"/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/test/Debug/FlyIC.Kernel.SysCall.Linux.Test\""
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FlyIC.Kernel.SysCall.Linux.Test.dir/link.txt --verbose=$(VERBOSE)

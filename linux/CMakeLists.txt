@@ -20,9 +20,11 @@ set(COMPILE_BASE_FLAGS -nostdlib -ffreestanding -nostdinc++ -fno-exceptions -fno
 set(LINK_BASE_FLAGS -nostdlib -Wl,-e,startup -fuse-ld=lld)
 
 if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-	set(COMPILE_EXT_FLAGS -g -O0)
+	set(COMPILE_EXT_FLAGS -g)
+	set(LINK_EXT_FLAGS -g)
 else()
 	set(COMPILE_EXT_FLAGS -g0 -O2)
+	set(LINK_EXT_FLAGS )
 endif()
 
 add_library(${ProjectName} STATIC src/lib.cpp)
@@ -32,8 +34,8 @@ set_target_properties(${ProjectName} PROPERTIES PREFIX "")
 set_target_properties(${ProjectName}.Test PROPERTIES PREFIX "")
 
 target_compile_options(${ProjectName} PRIVATE ${COMPILE_BASE_FLAGS} ${COMPILE_EXT_FLAGS})
-target_link_options(${ProjectName} PRIVATE ${LINK_BASE_FLAGS})
+target_link_options(${ProjectName} PRIVATE ${LINK_BASE_FLAGS} ${LINK_EXT_FLAGS})
 
 target_compile_options(${ProjectName}.Test PRIVATE ${COMPILE_BASE_FLAGS} ${COMPILE_EXT_FLAGS})
-target_link_options(${ProjectName}.Test PRIVATE ${LINK_BASE_FLAGS})
-target_link_libraries(${ProjectName}.Test PRIVATE FlyIC.Kernel.Base)
+target_link_options(${ProjectName}.Test PRIVATE ${LINK_BASE_FLAGS} ${LINK_EXT_FLAGS})
+target_link_libraries(${ProjectName}.Test PRIVATE FlyIC.Kernel.Base FlyIC.Kernel.SysCall.Linux)

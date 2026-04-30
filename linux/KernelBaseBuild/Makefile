@@ -154,6 +154,30 @@ src/lib.cpp.s:
 	cd "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/tmp" && $(MAKE) $(MAKESILENT) -f "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/build.make" "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/src/lib.cpp.s"
 .PHONY : src/lib.cpp.s
 
+src/placeholders.o: src/placeholders.cpp.o
+.PHONY : src/placeholders.o
+
+# target to build an object file
+src/placeholders.cpp.o:
+	cd "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/tmp" && $(MAKE) $(MAKESILENT) -f "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/build.make" "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.o"
+.PHONY : src/placeholders.cpp.o
+
+src/placeholders.i: src/placeholders.cpp.i
+.PHONY : src/placeholders.i
+
+# target to preprocess a source file
+src/placeholders.cpp.i:
+	cd "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/tmp" && $(MAKE) $(MAKESILENT) -f "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/build.make" "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.i"
+.PHONY : src/placeholders.cpp.i
+
+src/placeholders.s: src/placeholders.cpp.s
+.PHONY : src/placeholders.s
+
+# target to generate assembly for a file
+src/placeholders.cpp.s:
+	cd "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/tmp" && $(MAKE) $(MAKESILENT) -f "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/build.make" "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.s"
+.PHONY : src/placeholders.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -166,6 +190,9 @@ help:
 	@echo "... src/lib.o"
 	@echo "... src/lib.i"
 	@echo "... src/lib.s"
+	@echo "... src/placeholders.o"
+	@echo "... src/placeholders.i"
+	@echo "... src/placeholders.s"
 .PHONY : help
 
 

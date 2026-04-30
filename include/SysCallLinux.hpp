@@ -16,8 +16,8 @@ namespace FlyIC
 			class SysCallLinux
 			{
 			public:
-				ISysCall* CreateNewSysCall();
-				void DestroySysCall(ISysCall* SysCall);
+				static ISysCall* CreateNewSysCall();
+				static void DestroySysCall(ISysCall* SysCall);
 			};
 		}
 	}

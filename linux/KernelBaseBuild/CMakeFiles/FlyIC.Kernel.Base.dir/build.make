@@ -86,17 +86,33 @@ include /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/Kern
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/FlyIC.Kernel.Base.dir/src/lib.cpp.s"
 	cd "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild" && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/FlyIC.Kernel.Base/src/lib.cpp" -o CMakeFiles/FlyIC.Kernel.Base.dir/src/lib.cpp.s
 
+/mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.o: /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/flags.make
+/mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.o: /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/FlyIC.Kernel.Base/src/placeholders.cpp
+/mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.o: /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/tmp/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object /mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.o"
+	cd "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild" && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT "/mnt/projdisk/FlyLLC/FlyIC\\ пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.o" -MF CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.o.d -o CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.o -c "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/FlyIC.Kernel.Base/src/placeholders.cpp"
+
+/mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.i"
+	cd "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild" && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/FlyIC.Kernel.Base/src/placeholders.cpp" > CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.i
+
+/mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.s"
+	cd "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild" && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/FlyIC.Kernel.Base/src/placeholders.cpp" -o CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.s
+
 # Object files for target FlyIC.Kernel.Base
 FlyIC_Kernel_Base_OBJECTS = \
-"CMakeFiles/FlyIC.Kernel.Base.dir/src/lib.cpp.o"
+"CMakeFiles/FlyIC.Kernel.Base.dir/src/lib.cpp.o" \
+"CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.o"
 
 # External object files for target FlyIC.Kernel.Base
 FlyIC_Kernel_Base_EXTERNAL_OBJECTS =
 
 /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/lib/Debug/FlyIC.Kernel.Base.a: /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/src/lib.cpp.o
+/mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/lib/Debug/FlyIC.Kernel.Base.a: /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/src/placeholders.cpp.o
 /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/lib/Debug/FlyIC.Kernel.Base.a: /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/build.make
 /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/lib/Debug/FlyIC.Kernel.Base.a: /mnt/projdisk/FlyLLC/FlyIC\ пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/tmp/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library \"/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/lib/Debug/FlyIC.Kernel.Base.a\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/tmp/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library \"/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/lib/Debug/FlyIC.Kernel.Base.a\""
 	cd "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild" && $(CMAKE_COMMAND) -P CMakeFiles/FlyIC.Kernel.Base.dir/cmake_clean_target.cmake
 	cd "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FlyIC.Kernel.Base.dir/link.txt --verbose=$(VERBOSE)
 
