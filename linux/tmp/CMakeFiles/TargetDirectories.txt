@@ -1,0 +1,7 @@
+/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/tmp/CMakeFiles/FlyIC.Kernel.SysCall.Linux.dir
+/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/tmp/CMakeFiles/FlyIC.Kernel.SysCall.Linux.Test.dir
+/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/tmp/CMakeFiles/edit_cache.dir
+/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/tmp/CMakeFiles/rebuild_cache.dir
+/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/FlyIC.Kernel.Base.dir
+/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/edit_cache.dir
+/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/CMakeFiles/rebuild_cache.dir

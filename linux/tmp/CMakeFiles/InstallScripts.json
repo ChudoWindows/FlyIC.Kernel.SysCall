@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/mnt/projdisk/FlyLLC/FlyIC \u043f\u0430\u043a\u0435\u0442\u044b/FlyIC.Kernel.SysCall/linux/tmp/cmake_install.cmake",
+		"/mnt/projdisk/FlyLLC/FlyIC \u043f\u0430\u043a\u0435\u0442\u044b/FlyIC.Kernel.SysCall/linux/KernelBaseBuild/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
