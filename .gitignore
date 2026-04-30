@@ -1,5 +1,6 @@
 tmp
 lib
+test
 linux/KernelBaseBuild
 *.a
 *.o

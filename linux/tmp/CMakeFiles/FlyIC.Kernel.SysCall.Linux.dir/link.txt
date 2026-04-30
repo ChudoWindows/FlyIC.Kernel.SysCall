@@ -1,2 +1,0 @@
-/usr/bin/llvm-ar qc "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/lib/Debug/FlyIC.Kernel.SysCall.Linux.a" CMakeFiles/FlyIC.Kernel.SysCall.Linux.dir/src/lib.cpp.o
-/usr/bin/llvm-ranlib "/mnt/projdisk/FlyLLC/FlyIC пакеты/FlyIC.Kernel.SysCall/lib/Debug/FlyIC.Kernel.SysCall.Linux.a"

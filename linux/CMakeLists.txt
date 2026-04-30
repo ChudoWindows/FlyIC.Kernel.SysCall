@@ -4,10 +4,6 @@
 
 cmake_minimum_required(VERSION 3.20)
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../lib/${CMAKE_BUILD_TYPE})
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../lib/${CMAKE_BUILD_TYPE})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../test/${CMAKE_BUILD_TYPE})
-
 set(ProjectName FlyIC.Kernel.SysCall.Linux)
 project(${ProjectName})
 
@@ -15,6 +11,10 @@ include_directories(${CMAKE_SOURCE_DIR}/../FlyIC.Kernel.Base/include)
 include_directories(${CMAKE_SOURCE_DIR}/../include)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/../FlyIC.Kernel.Base ${CMAKE_SOURCE_DIR}/KernelBaseBuild)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../lib/${CMAKE_BUILD_TYPE})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../lib/${CMAKE_BUILD_TYPE})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../test/${CMAKE_BUILD_TYPE})
 
 set(COMPILE_BASE_FLAGS -nostdlib -ffreestanding -nostdinc++ -fno-exceptions -fno-rtti -fno-stack-protector -Wall -Wextra --target=x86_64-pc-linux-gnu)
 set(LINK_BASE_FLAGS -nostdlib -Wl,-e,startup -fuse-ld=lld)
