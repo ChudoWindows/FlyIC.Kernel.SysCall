@@ -8,10 +8,16 @@ set(ProjectName FlyIC.Kernel.SysCall.Linux)
 project(${ProjectName})
 
 include_directories(${CMAKE_SOURCE_DIR}/../FlyIC.Kernel.Base/include)
+include_directories(${CMAKE_SOURCE_DIR}/../FlyIC.Kernel.MemFunc/include)
 include_directories(${CMAKE_SOURCE_DIR}/../include)
 
-add_subdirectory(${CMAKE_SOURCE_DIR}/../FlyIC.Kernel.Base ${CMAKE_SOURCE_DIR}/KernelBaseBuild)
-add_subdirectory(${CMAKE_SOURCE_DIR}/../FlyIC.Kernel.MemFunc ${CMAKE_SOURCE_DIR}/KernelMemFuncBuild)
+if (NOT TARGET FlyIC.Kernel.Base)
+	add_subdirectory(${CMAKE_SOURCE_DIR}/../FlyIC.Kernel.Base ${CMAKE_SOURCE_DIR}/KernelBaseBuild)
+endif()
+
+if (NOT TARGET FlyIC.Kernel.MemFunc)
+	add_subdirectory(${CMAKE_SOURCE_DIR}/../FlyIC.Kernel.MemFunc ${CMAKE_SOURCE_DIR}/KernelMemFuncBuild)
+endif()
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../lib/${CMAKE_BUILD_TYPE})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../lib/${CMAKE_BUILD_TYPE})
