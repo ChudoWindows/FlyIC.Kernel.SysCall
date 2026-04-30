@@ -11,8 +11,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../test/${CMAKE_BUILD_TYP
 set(ProjectName FlyIC.Kernel.SysCall.Linux)
 project(${ProjectName})
 
-set(COMPILE_BASE_FLAGS -nostdlib -ffreestanding -nostdinc++ -fno-exceptions -fno-rtti -fno-stack-protector --target=x86_64-pc-linux-gnu)
-set(LINK_BASE_FLAGS -nostdlib -Wl,e,startup -fuse-ld=lld)
+add_subdirectory(${CMAKE_SOURCE_DIR}/../FlyIC.Kernel.Base)
+
+set(COMPILE_BASE_FLAGS -nostdlib -ffreestanding -nostdinc++ -fno-exceptions -fno-rtti -fno-stack-protector -Wall -Wextra --target=x86_64-pc-linux-gnu)
+set(LINK_BASE_FLAGS -nostdlib -Wl,-e,startup -fuse-ld=lld)
 
 if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
 	set(COMPILE_EXT_FLAGS -g -O0)
@@ -20,7 +22,7 @@ else()
 	set(COMPILE_EXT_FLAGS -g0 -O2)
 endif()
 
-include_directories(${CMAKE_SOURCE_DIR}/../../FlyIC.Kernel.Base/include)
+include_directories(${CMAKE_SOURCE_DIR}/../FlyIC.Kernel.Base/include)
 include_directories(${CMAKE_SOURCE_DIR}/../include)
 
 add_library(${ProjectName} STATIC src/lib.cpp)
@@ -34,3 +36,4 @@ target_link_options(${ProjectName} PRIVATE ${LINK_BASE_FLAGS})
 
 target_compile_options(${ProjectName}.Test PRIVATE ${COMPILE_BASE_FLAGS} ${COMPILE_EXT_FLAGS})
 target_link_options(${ProjectName}.Test PRIVATE ${LINK_BASE_FLAGS})
+target_link_libraries(${ProjectName}.Test PRIVATE FlyIC.Kernel.Base)
