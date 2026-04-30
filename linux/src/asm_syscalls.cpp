@@ -8,27 +8,24 @@
 #define SYS_MUNMAP 11
 #define SYS_EXIT 60
 
-static INT64 syscall6(INT64 number, INT64 arg1, INT64 arg2, INT64 arg3, INT64 arg4, INT64 arg5, INT64 arg6)
-{
-	INT64 ret;
-	
-	__asm__ volatile (
-		"movq %5, %%r10\n"
-		"movq %6, %%r8\n"
-		"movq %7, %%r9\n"
-		"syscall"
-		: "=a"(ret)
-		: "a"(number), "D"(arg1), "S"(arg2), "d"(arg3),
-		  "r"(arg4), "r"(arg5), "r"(arg6)
-  		: "rcx", "r11", "memory"		  
-	);
-
-	return ret;
+static INT64 syscall6(INT64 number, INT64 arg1, INT64 arg2, INT64 arg3, INT64 arg4, INT64 arg5, INT64 arg6) {
+    INT64 ret;
+    register INT64 r10 __asm__("r10") = arg4;
+    register INT64 r8  __asm__("r8")  = arg5;
+    register INT64 r9  __asm__("r9")  = arg6;
+    __asm__ volatile (
+        "syscall"
+        : "=a"(ret)
+        : "a"(number), "D"(arg1), "S"(arg2), "d"(arg3),
+          "r"(r10), "r"(r8), "r"(r9)
+        : "rcx", "r11", "memory"
+    );
+    return ret;
 }
 
 LPVOID sys_mmap(LPVOID addr, UINT64 size, INT32 prot, INT32 flags, INT32 fd, UINT64 offset)
 {
-	return (LPVOID)syscall6(SYS_MMAP, (INT64)addr, (INT64)size, (INT64)prot, (INT64)flags, (INT64)fd, (INT64)offset);
+	return (LPVOID)syscall6(SYS_MMAP, (INT64)addr, (INT64)size, (INT64)prot, (INT64)flags, (INT64)fd, 0);
 }
 
 INT32 sys_munmap(LPVOID addr, UINT64 size)

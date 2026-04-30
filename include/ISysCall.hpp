@@ -25,6 +25,7 @@ namespace FlyIC
 			public:
 				virtual IMemBlock Alloc(UINT64 Size) = 0;
 				virtual BOOL Free(IMemBlock& MemBlock) = 0;
+				virtual void Exit(INT32 Code) = 0;
 			};
 		}
 	}

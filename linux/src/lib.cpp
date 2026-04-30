@@ -29,6 +29,7 @@ class SysCallLinuxImpl : public FlyIC::Kernel::SysCall::ISysCall
 public:
 	FlyIC::Kernel::SysCall::IMemBlock Alloc(UINT64 Size) override;
 	BOOL Free(FlyIC::Kernel::SysCall::IMemBlock& MemBlock) override;
+	void Exit(INT32 Code) override;
 };
 
 FlyIC::Kernel::SysCall::IMemBlock SysCallLinuxImpl::Alloc(UINT64 Size)
@@ -50,6 +51,11 @@ BOOL SysCallLinuxImpl::Free(FlyIC::Kernel::SysCall::IMemBlock& MemBlock)
 {
 	sys_munmap(MemBlock.Mem, MemBlock.Size);
 	return TRUE;
+}
+
+void SysCallLinuxImpl::Exit(INT32 Code)
+{
+	sys_exit(Code);
 }
 
 SysCallLinuxImpl::ISysCall* FlyIC::Kernel::SysCall::SysCallLinux::CreateNewSysCall()

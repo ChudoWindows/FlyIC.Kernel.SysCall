@@ -3,10 +3,6 @@
 
 using namespace FlyIC::Kernel::SysCall;
 
-extern "C" void _start() {
-    asm("mov $60, %rax; mov $0, %rdi; syscall"); // exit(0);
-}
-
 extern "C" void startup()
 {
 	ISysCall* syscall = SysCallLinux::CreateNewSysCall();
@@ -21,4 +17,6 @@ extern "C" void startup()
 
 		syscall->Free(mem_block);
 	}
+
+	syscall->Exit(0);
 }
