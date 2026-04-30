@@ -8,6 +8,14 @@
 #include <SysCallLinux.hpp>
 #include <sys/mman.h>
 
+inline void* operator new(size_t, void* ptr) noexcept {
+    return ptr;
+}
+
+inline void operator delete(void*, void*) noexcept {
+    // Ничего не делаем, так как placement delete не нужен
+}
+
 class SysCallLinuxImpl : public FlyIC::Kernel::SysCall::ISysCall
 {
 public:
@@ -34,4 +42,24 @@ BOOL SysCallLinuxImpl::Free(FlyIC::Kernel::SysCall::IMemBlock& MemBlock)
 {
 	munmap(MemBlock.Mem, MemBlock.Size);
 	return TRUE;
+}
+
+SysCallLinuxImpl::ISysCall* FlyIC::Kernel::SysCall::SysCallLinux::CreateNewSysCall()
+{
+	UINT64 s = (sizeof(SysCallLinuxImpl) + 4095) & ~4095ULL;
+	LPVOID ptr = mmap(0, s, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+	if (ptr == MAP_FAILED)
+	{
+		return (SysCallLinuxImpl::ISysCall*)-1;
+	}
+	return new (ptr) SysCallLinuxImpl();
+}
+
+void FlyIC::Kernel::SysCall::SysCallLinux::DestroySysCall(ISysCall* SysCall)
+{
+	if (SysCall)
+	{
+		UINT64 s = (sizeof(SysCallLinuxImpl) + 4095) & ~4095ULL;
+		munmap(SysCall, s);
+	}
 }
