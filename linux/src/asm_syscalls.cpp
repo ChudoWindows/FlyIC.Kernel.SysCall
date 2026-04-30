@@ -25,7 +25,7 @@ static INT64 syscall6(INT64 number, INT64 arg1, INT64 arg2, INT64 arg3, INT64 ar
 
 LPVOID sys_mmap(LPVOID addr, UINT64 size, INT32 prot, INT32 flags, INT32 fd, UINT64 offset)
 {
-	return (LPVOID)syscall6(SYS_MMAP, (INT64)addr, (INT64)size, (INT64)prot, (INT64)flags, (INT64)fd, 0);
+	return (LPVOID)syscall6(SYS_MMAP, (INT64)addr, (INT64)size, (INT64)prot, (INT64)flags, (INT64)fd, (INT64)offset);
 }
 
 INT32 sys_munmap(LPVOID addr, UINT64 size)

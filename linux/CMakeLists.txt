@@ -37,8 +37,9 @@ endif()
 add_library(${ProjectName} STATIC src/lib.cpp src/asm_syscalls.cpp)
 add_executable(${ProjectName}.Test src/test.cpp)
 
-set_target_properties(${ProjectName} PROPERTIES PREFIX "")
-set_target_properties(${ProjectName}.Test PROPERTIES PREFIX "")
+set_target_properties(${ProjectName} PROPERTIES PREFIX "${CMAKE_BUILD_TYPE} ")
+set_target_properties(${ProjectName}.Test PROPERTIES PREFIX "${CMAKE_BUILD_TYPE} ")
+set_target_properties(${ProjectName}.Test PROPERTIES SUFFIX ".exec")
 
 target_compile_options(${ProjectName} PRIVATE ${COMPILE_BASE_FLAGS} ${COMPILE_EXT_FLAGS})
 target_link_options(${ProjectName} PRIVATE ${LINK_BASE_FLAGS} ${LINK_EXT_FLAGS})
