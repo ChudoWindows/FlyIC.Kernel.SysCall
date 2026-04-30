@@ -6,15 +6,6 @@
 #include <ExChar.hpp>
 #include <ISysCall.hpp>
 #include <SysCallLinux.hpp>
-#include <sys/mman.h>
-
-inline void* operator new(size_t, void* ptr) noexcept {
-    return ptr;
-}
-
-inline void operator delete(void*, void*) noexcept {
-    // Ничего не делаем, так как placement delete не нужен
-}
 
 class SysCallLinuxImpl : public FlyIC::Kernel::SysCall::ISysCall
 {
