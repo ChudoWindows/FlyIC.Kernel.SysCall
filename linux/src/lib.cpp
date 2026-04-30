@@ -23,6 +23,16 @@ void sys_exit(INT32);
 LPVOID operator new (UINT64, LPVOID);
 void operator delete (LPVOID, LPVOID);
 
+class HandleLinuxImpl : public FlyIC::Kernel::SysCall::IHandle
+{
+private:
+	UINT64 handle;
+
+public:
+	UINT64 Read(ExChar* Buffer) override;
+	UINT64 Write(const ExChar* Buffer) override;
+	void Close() override;
+};
 
 class SysCallLinuxImpl : public FlyIC::Kernel::SysCall::ISysCall
 {
@@ -30,6 +40,8 @@ public:
 	FlyIC::Kernel::SysCall::IMemBlock Alloc(UINT64 Size) override;
 	BOOL Free(FlyIC::Kernel::SysCall::IMemBlock& MemBlock) override;
 	void Exit(INT32 Code) override;
+	FlyIC::Kernel::SysCall::IHandle* GetStdHandle(UINT64 Number) override;
+	BOOL DestroyHandle(FlyIC::Kernel::SysCall::IHandle* Handle) override;
 };
 
 FlyIC::Kernel::SysCall::IMemBlock SysCallLinuxImpl::Alloc(UINT64 Size)
