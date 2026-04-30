@@ -7,6 +7,23 @@
 #include <ISysCall.hpp>
 #include <SysCallLinux.hpp>
 
+#define PROT_READ 0x1
+#define PROT_WRITE 0x2
+#define MAP_PRIVATE 0x2
+#define MAP_ANONYMOUS 0x20
+#define PROT_NONE 0x0
+#define PROT_EXEC 0x4
+#define MAP_SHARED 0x01
+#define MAP_FIXED 0x10
+#define MAP_FAILED (LPVOID)-1
+
+LPVOID sys_mmap(LPVOID, UINT64, INT32, INT32, INT32, UINT64);
+INT32 sys_munmap(LPVOID, UINT64);
+void sys_exit(INT32);
+LPVOID operator new (UINT64, LPVOID);
+void operator delete (LPVOID, LPVOID);
+
+
 class SysCallLinuxImpl : public FlyIC::Kernel::SysCall::ISysCall
 {
 public:
@@ -18,7 +35,7 @@ FlyIC::Kernel::SysCall::IMemBlock SysCallLinuxImpl::Alloc(UINT64 Size)
 {
 	FlyIC::Kernel::SysCall::IMemBlock mem_block = {FALSE, (LPVOID)-1, 0};
 	UINT64 s = (Size + 4095) & ~4095ULL;
-	LPVOID ptr = mmap(0, s, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+	LPVOID ptr = sys_mmap(0, s, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 	if (ptr == MAP_FAILED)
 	{
 		return mem_block;
@@ -31,14 +48,14 @@ FlyIC::Kernel::SysCall::IMemBlock SysCallLinuxImpl::Alloc(UINT64 Size)
 
 BOOL SysCallLinuxImpl::Free(FlyIC::Kernel::SysCall::IMemBlock& MemBlock)
 {
-	munmap(MemBlock.Mem, MemBlock.Size);
+	sys_munmap(MemBlock.Mem, MemBlock.Size);
 	return TRUE;
 }
 
 SysCallLinuxImpl::ISysCall* FlyIC::Kernel::SysCall::SysCallLinux::CreateNewSysCall()
 {
 	UINT64 s = (sizeof(SysCallLinuxImpl) + 4095) & ~4095ULL;
-	LPVOID ptr = mmap(0, s, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+	LPVOID ptr = sys_mmap(0, s, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 	if (ptr == MAP_FAILED)
 	{
 		return (SysCallLinuxImpl::ISysCall*)-1;
@@ -51,6 +68,6 @@ void FlyIC::Kernel::SysCall::SysCallLinux::DestroySysCall(ISysCall* SysCall)
 	if (SysCall)
 	{
 		UINT64 s = (sizeof(SysCallLinuxImpl) + 4095) & ~4095ULL;
-		munmap(SysCall, s);
+		sys_munmap(SysCall, s);
 	}
 }

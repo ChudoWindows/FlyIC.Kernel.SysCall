@@ -11,6 +11,7 @@ include_directories(${CMAKE_SOURCE_DIR}/../FlyIC.Kernel.Base/include)
 include_directories(${CMAKE_SOURCE_DIR}/../include)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/../FlyIC.Kernel.Base ${CMAKE_SOURCE_DIR}/KernelBaseBuild)
+add_subdirectory(${CMAKE_SOURCE_DIR}/../FlyIC.Kernel.MemFunc ${CMAKE_SOURCE_DIR}/KernelMemFuncBuild)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../lib/${CMAKE_BUILD_TYPE})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../lib/${CMAKE_BUILD_TYPE})
@@ -27,7 +28,7 @@ else()
 	set(LINK_EXT_FLAGS )
 endif()
 
-add_library(${ProjectName} STATIC src/lib.cpp)
+add_library(${ProjectName} STATIC src/lib.cpp src/asm_syscalls.cpp)
 add_executable(${ProjectName}.Test src/test.cpp)
 
 set_target_properties(${ProjectName} PROPERTIES PREFIX "")
@@ -38,4 +39,4 @@ target_link_options(${ProjectName} PRIVATE ${LINK_BASE_FLAGS} ${LINK_EXT_FLAGS})
 
 target_compile_options(${ProjectName}.Test PRIVATE ${COMPILE_BASE_FLAGS} ${COMPILE_EXT_FLAGS})
 target_link_options(${ProjectName}.Test PRIVATE ${LINK_BASE_FLAGS} ${LINK_EXT_FLAGS})
-target_link_libraries(${ProjectName}.Test PRIVATE FlyIC.Kernel.Base FlyIC.Kernel.SysCall.Linux)
+target_link_libraries(${ProjectName}.Test PRIVATE FlyIC.Kernel.Base FlyIC.Kernel.MemFunc FlyIC.Kernel.SysCall.Linux)

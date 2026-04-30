@@ -2,6 +2,7 @@ tmp
 lib
 test
 linux/KernelBaseBuild
+linux/KernelMemFuncBuild
 *.a
 *.o
 *.exec
