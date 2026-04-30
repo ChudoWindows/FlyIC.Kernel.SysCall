@@ -1,5 +1,6 @@
 tmp
 lib
+linux/KernelBaseBuild
 *.a
 *.o
 *.exec
