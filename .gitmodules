@@ -1,0 +1,3 @@
+[submodule "FlyIC.Kernel.Base"]
+	path = FlyIC.Kernel.Base
+	url = https://github.com/ChudoWindows/FlyIC.Kernel.Base
