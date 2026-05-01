@@ -4,7 +4,7 @@ set -e
 project_name="FlyIC.Kernel.SysCall.POSIX.Linux"
 
 mkdir -p build
-mkdir -p lib
+mkdir -p ../lib
 
 # Инициализация переменных
 build_type=""
@@ -52,8 +52,8 @@ mkdir -p "build/$build_type"
 mkdir -p "../lib/$build_type"
 mkdir -p "../test/$build_type"
 
-compile_flags="-Iinclude -nostdlib -ffreestanding -fno-rtti -fno-exceptions -fno-stack-protector"
-link_flags="-nostdlib -Wl,-e,startup -target=x86_64-pc-linux-gnu -fuse-ld=lld"
+compile_flags="-I ../include -I ../FlyIC.Kernel.Base/include -I ../FlyIC.Kernel.MemFunc/include -nostdlib -ffreestanding -fno-rtti -fno-exceptions -fno-stack-protector"
+link_flags="-nostdlib -Wl,-e,startup --target=x86_64-pc-linux-gnu -fuse-ld=lld"
 
 if [ "$build_type" = "Debug" ]; then
     compile_flags="$compile_flags -g -O0"
@@ -94,9 +94,11 @@ log 6 7 "test.cpp"
 clang++ -c ./src/test.cpp -o "./build/$build_type/test.o" $compile_flags
 
 log 7 7 "Linking..."
-clang "./build/$build_type/test.o" -o "../test/$build_type/$build_type.$project_name.Test.exec" $link_flags \
-	-l "../FlyIC.Kernel.Base/lib/$build_type/$build_type.FlyIC.Kernel.Base.a" \
-	-l "../FlyIC.Kernel.MemFunc/lib/$build_type/$build_type.FlyIC.Kernel.MemFunc.a"
+clang  -o "../test/$build_type/$build_type.$project_name.Test.exec" $link_flags \
+	"../FlyIC.Kernel.Base/lib/$build_type/$build_type.FlyIC.Kernel.Base.a" \
+	"../FlyIC.Kernel.MemFunc/lib/$build_type/$build_type.FlyIC.Kernel.MemFunc.a" \
+	"../lib/$build_type/$build_type.$project_name.a" \
+	"./build/$build_type/test.o"
 
 # Если не указан флаг --hide, ждём нажатия Enter
 if [ "$hide" -eq 0 ]; then

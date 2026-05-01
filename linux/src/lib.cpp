@@ -40,8 +40,6 @@ public:
 	FlyIC::Kernel::SysCall::IMemBlock Alloc(UINT64 Size) override;
 	BOOL Free(FlyIC::Kernel::SysCall::IMemBlock& MemBlock) override;
 	void Exit(INT32 Code) override;
-	FlyIC::Kernel::SysCall::IHandle* GetStdHandle(UINT64 Number) override;
-	BOOL DestroyHandle(FlyIC::Kernel::SysCall::IHandle* Handle) override;
 };
 
 FlyIC::Kernel::SysCall::IMemBlock SysCallLinuxImpl::Alloc(UINT64 Size)

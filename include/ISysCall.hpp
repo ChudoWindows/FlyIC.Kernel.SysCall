@@ -42,8 +42,6 @@ namespace FlyIC
 				virtual IMemBlock Alloc(UINT64 Size) = 0;
 				virtual BOOL Free(IMemBlock& MemBlock) = 0;
 				virtual void Exit(INT32 Code) = 0;
-				virtual IHandle* GetStdHandle(UINT64 Number) = 0;
-				virtual BOOL DestroyHandle(IHandle* Handle) = 0;
 			};
 		}
 	}
