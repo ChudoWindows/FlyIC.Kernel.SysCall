@@ -7,16 +7,50 @@ extern "C" void startup()
 {
 	ISysCall* syscall = SysCallLinux::CreateNewSysCall();
 
-	IMemBlock mem_block = syscall->Alloc(20);
-	if (mem_block.Success == TRUE)
-	{
-		LPUINT16 shorts = (LPUINT16)mem_block.Mem;
-		shorts[0] = 0;
-		shorts[6] = 1046;
-		shorts[9] = 874;
+	IHandle* out = syscall->GetStdHandle(IHandleNumber::Output);
 
-		syscall->Free(mem_block);
-	}
+	ExChar msg[7];
+	msg[0] = U'H';
+	msg[1] = U'e';
+	msg[2] = U'l';
+	msg[3] = U'l';
+	msg[4] = U'o';
+	msg[5] = U'\n';
+	msg[6] = U'\0';
+
+	out->Write((ExChar*) &msg);
+	
+	msg[0] = U'С';
+	msg[1] = U'а';
+	msg[2] = U'л';
+	msg[3] = U'а';
+	msg[4] = U'м';
+
+	out->Write((ExChar*) &msg);
+
+	msg[0] = U'😂';
+	msg[1] = U'✨';
+	msg[2] = U'🔥';
+	msg[3] = U'🙃';
+	msg[4] = U'🥰';
+
+	out->Write((ExChar*) &msg);
+	
+	// Ввод текста
+	IMemBlock mem_block = syscall->Alloc(100 * sizeof(ExChar));
+	if (mem_block.Success == FALSE) syscall->Exit(-1);
+
+	ExChar* buf = (ExChar*)mem_block.Mem;
+
+	IHandle* in = syscall->GetStdHandle(IHandleNumber::Input);
+	UINT64 readed = in->Read(buf, 99);
+	buf[readed] = U'\0';
+	out->Write(buf);
+
+	syscall->Free(mem_block);
+	
+	syscall->DestroyHandle(in);
+	syscall->DestroyHandle(out);
 
 	syscall->Exit(0);
 }

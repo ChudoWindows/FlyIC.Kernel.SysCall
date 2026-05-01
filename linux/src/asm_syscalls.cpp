@@ -8,6 +8,8 @@
 #define SYS_MUNMAP 11
 #define SYS_EXIT 60
 #define SYS_WRITE 1
+#define SYS_READ 0
+#define SYS_CLOSE 3
 
 #define STD_INPUT 0
 #define STD_OUTPUT 1
@@ -51,5 +53,15 @@ UINT64 sys_getstdhandle(UINT64 Number)
 
 INT64 sys_write(UINT64 fd, LPCVOID buf, UINT64 count)
 {
-	return (UINT64)syscall6(SYS_WRITE, (INT64)fd, (INT64)buf, (INT64)count, 0, 0, 0);
+	return (INT64)syscall6(SYS_WRITE, (INT64)fd, (INT64)buf, (INT64)count, 0, 0, 0);
+}
+
+INT64 sys_read(UINT64 fd, LPVOID buf, UINT64 count)
+{
+	return (INT64)syscall6(SYS_READ, (INT64)fd, (INT64)buf, (INT64)count, 0, 0, 0);
+}
+
+INT64 sys_close(UINT64 fd)
+{
+	return (INT64)syscall6(SYS_CLOSE, fd, 0, 0, 0, 0, 0);
 }
