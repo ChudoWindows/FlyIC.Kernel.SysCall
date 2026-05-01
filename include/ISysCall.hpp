@@ -25,6 +25,7 @@ namespace FlyIC
 			public:
 				virtual UINT64 Read(ExChar* Buffer, UINT64 Size) = 0;
 				virtual void Write(const ExChar* Buffer) = 0;
+				virtual void Write(LPCUINT8 Buffer, UINT64 Size) = 0;
 				virtual BOOL Close() = 0;
 			};
 			
@@ -36,6 +37,29 @@ namespace FlyIC
 				const static UINT64 Error = 2;
 			};
 
+			class IFile : public IHandle
+			{
+			public:
+				virtual void Seek(UINT64 Pos, UINT64 Origin) = 0;
+				virtual UINT64 GetSize() = 0;
+			};
+
+			class IFileOrigin
+			{
+			public:
+				const static UINT64 Start = 0;
+				const static UINT64 Current = 1;
+				const static UINT64 End = 2;
+			};
+
+			class IFileOpenMode
+			{
+			public:
+				const static UINT64 Read = 0;
+				const static UINT64 Write = 1;
+				const static UINT64 ReadWrite = 2;
+			};
+
 			class ISysCall
 			{
 			public:
@@ -44,6 +68,8 @@ namespace FlyIC
 				virtual void Exit(INT32 Code) = 0;
 				virtual IHandle* GetStdHandle(UINT64 Number) = 0;
 				virtual BOOL DestroyHandle(IHandle* Handle) = 0;
+				virtual IFile* OpenFile(const ExChar* Filepath, UINT64 Openmode) = 0;
+				virtual BOOL DestroyFile(IFile* File);
 			};
 		}
 	}
