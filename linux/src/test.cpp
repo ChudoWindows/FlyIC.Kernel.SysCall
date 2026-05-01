@@ -3,6 +3,7 @@
 
 using namespace FlyIC::Kernel::SysCall;
 
+__attribute__((force_align_arg_pointer))
 extern "C" void startup()
 {
 	ISysCall* syscall = SysCallLinux::CreateNewSysCall();
