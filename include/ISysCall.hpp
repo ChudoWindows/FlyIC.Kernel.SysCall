@@ -31,9 +31,9 @@ namespace FlyIC
 			class IHandleNumber
 			{
 			public:
-				static UINT64 Input = 0;
-				static UINT64 Output = 1;
-				static UINT64 Error = 2;
+				const static UINT64 Input = 0;
+				const static UINT64 Output = 1;
+				const static UINT64 Error = 2;
 			};
 
 			class ISysCall

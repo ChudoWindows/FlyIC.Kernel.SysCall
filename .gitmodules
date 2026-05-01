@@ -1,6 +1,0 @@
-[submodule "FlyIC.Kernel.Base"]
-	path = FlyIC.Kernel.Base
-	url = https://github.com/ChudoWindows/FlyIC.Kernel.Base
-[submodule "FlyIC.Kernel.MemFunc"]
-	path = FlyIC.Kernel.MemFunc
-	url = https://github.com/ChudoWindows/FlyIC.Kernel.MemFunc
